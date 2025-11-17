@@ -40,7 +40,7 @@ jobs:
       with:
         context: .
         file: nred.Dockerfile
-        # push: true
+        push-to-registry: true
         tags: ${{ env.IMAGE_NAME }}/latest
         labels: ${{ steps.meta.outputs.labels }}
 
