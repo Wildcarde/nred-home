@@ -19,6 +19,12 @@ jobs:
       id-token: write
 
     steps:
+    - name: set lower case owner name
+      run: |
+        echo "OWNER_LC=${OWNER,,}" >>${GITHUB_ENV}
+      env:
+        OWNER: '${{ github.repository_owner }}'
+
     - name: Checkout repo
       uses: actions/checkout@v5
 
@@ -41,7 +47,7 @@ jobs:
         context: .
         file: nred.Dockerfile
         push: true
-        tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+        tags: ${{ steps.meta.outpus.tags }}:latest
         labels: ${{ steps.meta.outputs.labels }}
 
     - name: Generate artifact attestation
