@@ -36,6 +36,7 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Extract metadata (tags, labels) for docker
+      id: meta
       uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
       with:
         images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
@@ -47,7 +48,7 @@ jobs:
         context: .
         file: nred.Dockerfile
         push: true
-        tags: ghcr.io/wildcarde/nred-home:latest
+        tags: ${{ steps.meta.outputs.tags }}:latest
         labels: ${{ steps.meta.outputs.labels }}
 
     - name: Generate artifact attestation
