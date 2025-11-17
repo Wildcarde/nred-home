@@ -47,7 +47,7 @@ jobs:
         context: .
         file: nred.Dockerfile
         push: true
-        tags: ${{ steps.meta.outpus.tags }}:latest
+        tags: ${{ steps.meta.outputs.tags }}:latest
         labels: ${{ steps.meta.outputs.labels }}
 
     - name: Generate artifact attestation
