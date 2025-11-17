@@ -40,8 +40,8 @@ jobs:
       with:
         context: .
         file: nred.Dockerfile
-        push-to-registry: true
-        tags: ${{ env.IMAGE_NAME }}/latest
+        push: true
+        tags: ${{ env.IMAGE_NAME }}:latest
         labels: ${{ steps.meta.outputs.labels }}
 
     - name: Generate artifact attestation
