@@ -47,7 +47,7 @@ jobs:
         context: .
         file: nred.Dockerfile
         push: true
-        tags: ${{ steps.meta.outputs.images }}:latest
+        tags: ghcr.io/wildcarde/nred-home:latest
         labels: ${{ steps.meta.outputs.labels }}
 
     - name: Generate artifact attestation
